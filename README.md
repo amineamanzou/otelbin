@@ -23,9 +23,7 @@ Open [http://localhost:3180](http://localhost:3180). Under **Validation**, pick 
 
 ## Bundled Collectors
 
-The Linux image includes OpenTelemetry Collector **Core, Contrib, and Kubernetes**, each at releases **0.134.1** and **0.160.0**. The picker lists the binaries installed in the instance. Native macOS builds offer Core and Contrib. The [catalog](packages/otelbin/src/lib/collector-catalog.json) pins the release assets and SHA-256 checksums for `arm64` and `amd64`. To add a release or another distribution, update the catalog with the archive metadata and a binary that supports `validate`.
-
-The picker shows the publication tag. The Contrib binary shipped in the `0.134.1` archive reports `0.134.0` with `--version`.
+The Linux image bundles one release of OpenTelemetry Collector **Core, Contrib, and Kubernetes**, all pinned to **0.165.0**. The picker lists the binaries installed in the instance. Native macOS builds offer Core and Contrib. The [catalog](packages/otelbin/src/lib/collector-catalog.json) pins the release assets and SHA-256 checksums for `arm64` and `amd64`. To add a release or another distribution, update the catalog with the archive metadata and a binary that supports `validate`.
 
 ## Build dependencies
 

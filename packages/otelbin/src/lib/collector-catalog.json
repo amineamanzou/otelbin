@@ -8,23 +8,13 @@
 		"repository": "open-telemetry/opentelemetry-collector-releases",
 		"releases": [
 			{
-				"version": "v0.160.0",
+				"version": "v0.165.0",
 				"artifact": "otelcol",
 				"sha256": {
-					"darwin_amd64": "480fcb29a9fc3f54da661166f7eb40677d4230198123759220255acc5cf35130",
-					"darwin_arm64": "a56143a40a2c205cdd63da4af0249f2534691785c14cdd2a0c532becb4335521",
-					"linux_amd64": "5415b8daf782f17cc463c3e46816abf181a68a04b7bcf98c273c3c204096c743",
-					"linux_arm64": "a8d4f0fe0701ab0e20d7c198381a80552d5d58d25ca43e074d542d31b454738d"
-				}
-			},
-			{
-				"version": "v0.134.1",
-				"artifact": "otelcol",
-				"sha256": {
-					"darwin_amd64": "36228ec23fbc195c226683d998523e74088041be9a42836f6e444b3572c96870",
-					"darwin_arm64": "ddf8c9e2656ce98ffe3b37eec71467accc429efa01a5d8711301c587b9264897",
-					"linux_amd64": "61e8ee6ee5f820258fd9789f48ad924d9e96b00732e0406fc95b15465d330ac5",
-					"linux_arm64": "ee6bc89df030a236b3605a865e36a96bc946238572c35dd2cb42a674293da8e3"
+					"darwin_amd64": "3abe452b96764b126cb43b1440e0f8e02903ee02c48a4e7f2584d740bf6ff71b",
+					"darwin_arm64": "1d68c0f41011a571199cd9489b04dd554e12091cacba862803a5c8ef0004d32a",
+					"linux_amd64": "78570dd4bd6570bc41eb327869ef913bbf91b87dd8170ebebbf43bec71f6370d",
+					"linux_arm64": "e59c320b90885610e346f3f82d2ceca55c5c30ede1549fd14cce577d175901cd"
 				}
 			}
 		]
@@ -38,23 +28,13 @@
 		"repository": "open-telemetry/opentelemetry-collector-releases",
 		"releases": [
 			{
-				"version": "v0.160.0",
+				"version": "v0.165.0",
 				"artifact": "otelcol-contrib",
 				"sha256": {
-					"darwin_amd64": "1576c3049c1fd4e8172d9817313a0129f4d2a1004aa653987d765df048e1e959",
-					"darwin_arm64": "ceb5309ba16f2587dbef765d54e15c803354d038b0495b0b691e1eb9876d17c9",
-					"linux_amd64": "7bb60c584c241c86261c2b8697cd3725dd8c56691f5ad5d98454eaa005b47b0c",
-					"linux_arm64": "bff414e6a287309dfd0c51350c1e13c96c4ab807127b4320bd684f605e781326"
-				}
-			},
-			{
-				"version": "v0.134.1",
-				"artifact": "otelcol-contrib",
-				"sha256": {
-					"darwin_amd64": "a7eaef5d0139f6b929a01f31abdda0f6d107cafe4bf5b4d86b26af93762fe70e",
-					"darwin_arm64": "295240c82709dba37dc874adce44496193dea15f8d9ee401e8aa281feed6b664",
-					"linux_amd64": "c54842030d755ea5f3fd4ad7ab6b3b4be9a0a7d8856ce9b6e15dd12e8c2d38cf",
-					"linux_arm64": "dfa94f4c0af37f8629333513e2aead8b6247e0c419550232f3c811a73d8cdbc8"
+					"darwin_amd64": "7d14e5c14bcb930d55f2bd5d3fbb3734be5fd2889698488e65e488efda5473c9",
+					"darwin_arm64": "f9a0ed310e9beeb0fabca9d9c24bd0d3467f6339e3207710dbd66a6adf1298f6",
+					"linux_amd64": "bd6e73d94bf3359ad6fac25529a8ee308adb9b0b8a0e8af034ed3891fbe5aa33",
+					"linux_arm64": "376420729c862230807bc89811d07d10031eaeca3f6481fe371a2bdcefd2c8fa"
 				}
 			}
 		]
@@ -68,19 +48,11 @@
 		"repository": "open-telemetry/opentelemetry-collector-releases",
 		"releases": [
 			{
-				"version": "v0.160.0",
+				"version": "v0.165.0",
 				"artifact": "otelcol-k8s",
 				"sha256": {
-					"linux_amd64": "8e6a27eadf71ad17d07902e64d1d1b69c23f96a599b6443429a0e6cb44353a3c",
-					"linux_arm64": "65335b8eccf4a8e4d0464b16898fe7cb4b83e5779290782b8bee0dddf8ddc51f"
-				}
-			},
-			{
-				"version": "v0.134.1",
-				"artifact": "otelcol-k8s",
-				"sha256": {
-					"linux_amd64": "3f2f607387160cb1d4e40be15f64a873e1ea92eed50fa4a76548f14fde2107c2",
-					"linux_arm64": "3abf31dc67f58d2a119881d10dc3a7a8eaf4f85e5210871a38e224c4c99b884b"
+					"linux_amd64": "b7ee2286a002e60609600cf71d3fe99ee2bc9966c8aa0964ede13fc0cd192f9a",
+					"linux_arm64": "430ee45fb6991b024f720003add8cc4a5f206764b26b49df4e4dd5b12da36e05"
 				}
 			}
 		]
