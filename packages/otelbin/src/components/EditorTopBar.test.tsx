@@ -3,12 +3,6 @@
 
 import { beforeEach, describe, expect, it, jest } from "@jest/globals";
 import { fireEvent, render, screen } from "@testing-library/react";
-import type { NextFont } from "next/dist/compiled/@next/font";
-
-const trackMock = jest.fn();
-jest.mock("@vercel/analytics", () => ({
-	track: (...args: unknown[]) => trackMock(...args),
-}));
 
 // EditorContext pulls in monaco-yaml, which is ESM-only and jest cannot parse.
 // We do not exercise the editor stack in this test -- only the two React
@@ -19,13 +13,10 @@ import EditorTopBar from "./EditorTopBar";
 import { TooltipProvider } from "~/components/tooltip";
 import { BreadcrumbsContext, ViewModeContext, type ViewMode } from "~/contexts/EditorContext";
 
-const font = { className: "font-mono" } as NextFont;
-
 const writeTextMock = jest.fn<(v: string) => Promise<void>>();
 const createObjectURLMock = jest.fn<(b: Blob) => string>();
 
 beforeEach(() => {
-	trackMock.mockReset();
 	writeTextMock.mockReset().mockResolvedValue(undefined);
 	createObjectURLMock.mockReset().mockReturnValue("blob:mock-url");
 
@@ -53,7 +44,7 @@ function renderTopBar({
 		<TooltipProvider>
 			<ViewModeContext.Provider value={{ viewMode: "both", setViewMode }}>
 				<BreadcrumbsContext.Provider value={{ path, setPath: jest.fn() }}>
-					<EditorTopBar config={config} font={font} />
+					<EditorTopBar config={config} />
 				</BreadcrumbsContext.Provider>
 			</ViewModeContext.Provider>
 		</TooltipProvider>
@@ -69,7 +60,6 @@ describe("EditorTopBar", () => {
 		fireEvent.click(screen.getByRole("button", { name: /copy editor content/i }));
 
 		expect(writeTextMock).toHaveBeenCalledWith(config);
-		expect(trackMock).toHaveBeenCalledWith("Copied Config To Clipboard");
 	});
 
 	it("triggers a download containing the config as a Blob when the download button is clicked", async () => {
@@ -89,7 +79,6 @@ describe("EditorTopBar", () => {
 			reader.readAsText(blob);
 		});
 		expect(text).toBe(config);
-		expect(trackMock).toHaveBeenCalledWith("Download Config", { location: "Editor" });
 	});
 
 	it("switches the view mode to 'pipeline' when the hide-editor button is clicked", () => {

@@ -8,3 +8,4 @@ coverage
 .storybook/public/mockServiceWorker.js
 packages/otelbin-validation
 packages/otelbin-validation-image
+/src/components/monaco-editor/browser-schema.cjs

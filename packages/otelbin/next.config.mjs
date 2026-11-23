@@ -4,6 +4,8 @@
 /** @type {import("next").NextConfig} */
 const config = {
 	reactStrictMode: true,
+	output: process.env.OTELBIN_STANDALONE === "1" ? "standalone" : undefined,
+	poweredByHeader: false,
 	webpack(config) {
 		// In Next.js 16, SVG is bundled into the built-in image asset rules.
 		// Remove svg from all existing rules and add @svgr/webpack at the top.
@@ -49,6 +51,21 @@ const config = {
 		];
 
 		if (process.env.NODE_ENV === "production") {
+			headers.push({
+				key: "Content-Security-Policy",
+				value: [
+					"default-src 'self'",
+					"connect-src 'self'",
+					"script-src 'self' 'unsafe-inline'",
+					"style-src 'self' 'unsafe-inline'",
+					"img-src 'self' data: blob:",
+					"worker-src 'self' blob:",
+					"object-src 'none'",
+					"base-uri 'self'",
+					"frame-ancestors 'none'",
+					"form-action 'self'",
+				].join("; "),
+			});
 			headers.push({
 				key: "Strict-Transport-Security",
 				value: "max-age=31536000; includeSubDomains",

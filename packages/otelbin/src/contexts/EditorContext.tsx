@@ -115,7 +115,7 @@ export const EditorProvider = ({ children }: { children: ReactNode }) => {
 	useEffect(() => {
 		if (!isServerValidationEnabled && monaco) {
 			const monacoYaml = configureMonacoYaml(monaco, {
-				enableSchemaRequest: true,
+				enableSchemaRequest: false,
 				schemas: [
 					{
 						uri: "https://github.com/dash0hq/otelbin/blob/main/packages/otelbin/src/components/monaco-editor/schema.json",

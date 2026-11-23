@@ -1,1 +1,6 @@
 /.idea/
+
+# Local Collector executables
+/packages/otelbin/.collectors/
+
+/packages/otelbin/src/components/monaco-editor/browser-schema.cjs

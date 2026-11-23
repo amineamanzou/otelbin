@@ -3,7 +3,6 @@
 
 import { useEffect, useState, useRef } from "react";
 import { ChevronDown, XCircle, AlertTriangle } from "lucide-react";
-import { type NextFont } from "next/dist/compiled/@next/font";
 import type { YAMLParseError } from "yaml";
 
 export interface IAjvError {
@@ -32,7 +31,7 @@ interface State {
 	initialHeight: number;
 }
 
-export default function ValidationErrorConsole({ errors, font }: { errors?: IError; font: NextFont }) {
+export default function ValidationErrorConsole({ errors }: { errors?: IError }) {
 	const validationConsoleDiv = useRef<HTMLDivElement>(null);
 	const [height, setHeight] = useState(170);
 	const errorCount =
@@ -131,20 +130,20 @@ export default function ValidationErrorConsole({ errors, font }: { errors?: IErr
 							{errors?.customWarnings &&
 								errors.customWarnings?.length > 0 &&
 								errors.customWarnings.map((warning: string, index: number) => {
-									return <ErrorMessage key={index} customWarnings={warning} font={font} />;
+									return <ErrorMessage key={index} customWarnings={warning} />;
 								})}
-							{errors?.serverSideError?.error && <ErrorMessage serverSideError={errors.serverSideError} font={font} />}
+							{errors?.serverSideError?.error && <ErrorMessage serverSideError={errors.serverSideError} />}
 							{errors?.ajvErrors &&
 								errors.ajvErrors?.length > 0 &&
 								errors.ajvErrors.map((error: IAjvError, index: number) => {
-									return <ErrorMessage key={index} ajvError={error} font={font} />;
+									return <ErrorMessage key={index} ajvError={error} />;
 								})}
 							{errors?.customErrors &&
 								errors.customErrors?.length > 0 &&
 								errors.customErrors.map((error: string, index: number) => {
-									return <ErrorMessage key={index} customErrors={error} font={font} />;
+									return <ErrorMessage key={index} customErrors={error} />;
 								})}
-							{errors?.yamlError?.linePos?.[0] && <ErrorMessage yamlError={errors?.yamlError} font={font} />}
+							{errors?.yamlError?.linePos?.[0] && <ErrorMessage yamlError={errors?.yamlError} />}
 						</div>
 					)}
 				</div>
@@ -159,45 +158,43 @@ export function ErrorMessage({
 	serverSideError,
 	customErrors,
 	customWarnings,
-	font,
 }: {
 	ajvError?: IAjvError;
 	yamlError?: YAMLParseError;
 	serverSideError?: IServerSideError;
 	customErrors?: string;
 	customWarnings?: string;
-	font: NextFont;
 }) {
 	const errorsStyle = "flex items-center gap-x-1 text-xs font-normal text-red-600 select-text mr-[20px]";
 	const warningStyle = "flex items-center gap-x-1 text-xs font-normal text-yellow-300 select-text mr-[20px]";
 	return (
 		<>
 			{customWarnings && (
-				<div className={`${font.className} ${warningStyle}`}>
+				<div className={`font-mono ${warningStyle}`}>
 					<p className="max-w-[100%]">{`${customWarnings}`}</p>
 				</div>
 			)}
 			{ajvError && (
-				<div className={`${font.className} ${errorsStyle}`}>
+				<div className={`font-mono ${errorsStyle}`}>
 					<p className="max-w-[100%]">{`${ajvError.message} ${
 						(ajvError.line ?? 0) > 1 ? `(Line ${ajvError.line})` : ""
 					}`}</p>
 				</div>
 			)}
 			{customErrors && (
-				<div className={`${font.className} ${errorsStyle}`}>
+				<div className={`font-mono ${errorsStyle}`}>
 					<p className="max-w-[100%]">{`${customErrors}`}</p>
 				</div>
 			)}
 			{yamlError ? (
-				<div className={`${font.className} ${errorsStyle}`}>
+				<div className={`font-mono ${errorsStyle}`}>
 					<p className="max-w-[100%]">{`${yamlError.message}`}</p>
 				</div>
 			) : (
 				<></>
 			)}
 			{serverSideError ? (
-				<div className={`${font.className} ${errorsStyle}`}>
+				<div className={`font-mono ${errorsStyle}`}>
 					<p>{`${serverSideError.message} - ${serverSideError.error} ${
 						(serverSideError.line ?? 0) > 1 ? `(Line ${serverSideError.line})` : ""
 					}`}</p>

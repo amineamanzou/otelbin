@@ -1,10 +1,9 @@
 // SPDX-FileCopyrightText: 2023 Dash0 Inc.
 // SPDX-License-Identifier: Apache-2.0
 
-import { schema } from "./JSONSchema";
+import validateSchema from "./browser-schema.cjs";
 import type { IAjvError, IError } from "./ValidationErrorConsole";
 import YAML, { type YAMLParseError } from "yaml";
-import Ajv from "ajv";
 import type { ErrorObject } from "ajv";
 import { type RefObject } from "react";
 import type { editor } from "monaco-editor";
@@ -37,9 +36,6 @@ export function validateOtelCollectorConfigurationAndSetMarkers(
 	isServerSideValidationEnabled: boolean,
 	serverSideValidationResult?: ValidationState
 ) {
-	const ajv = new Ajv({ allErrors: true });
-	// eslint-disable-next-line @typescript-eslint/no-var-requires
-	require("ajv-errors")(ajv);
 	const model = editorRef.current?.getModel();
 	const ajvError: IAjvError[] = [];
 	const totalErrors: IError = { ajvErrors: ajvError, customErrors: [], customWarnings: [] };
@@ -59,9 +55,9 @@ export function validateOtelCollectorConfigurationAndSetMarkers(
 
 	try {
 		parsedConfig = YAML.parse(configData, { logLevel: "error", schema: "failsafe" });
-		const valid = ajv.validate(schema, parsedConfig);
+		const valid = validateSchema(parsedConfig);
 		if (!valid) {
-			const errors = ajv.errors;
+			const errors = validateSchema.errors;
 
 			if (errors) {
 				const validationErrors = errors.map((error: ErrorObject) => {

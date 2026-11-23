@@ -13,7 +13,7 @@ const { compilerOptions } = JSON.parse(readFileSync("./tsconfig.json", "utf8")) 
 // sit above the SPDX header (jest only honors the pragma when it is the first
 // comment block in the file), which the eslint headers/header-format rule
 // then flags as a header violation.
-const nodeTestPaths = ["<rootDir>/src/lib/utils.test.ts", "<rootDir>/src/middleware.test.ts"];
+const nodeTestPaths = ["<rootDir>/src/lib/utils.test.ts", "<rootDir>/src/lib/localValidation.test.ts"];
 
 const sharedProjectConfig = {
 	preset: "ts-jest",

@@ -5,11 +5,9 @@ import { IconButton } from "~/components/icon-button";
 import { Tooltip, TooltipContent, TooltipTrigger } from "~/components/tooltip";
 import { useToast } from "~/components/use-toast";
 import { ArrowDownToLine, Copy, PanelLeftClose } from "lucide-react";
-import { type NextFont } from "next/dist/compiled/@next/font";
 import { useBreadcrumbs, useViewMode } from "~/contexts/EditorContext";
-import { track } from "@vercel/analytics";
 
-export default function EditorTopBar({ config, font }: { config: string; font: NextFont }) {
+export default function EditorTopBar({ config }: { config: string }) {
 	const { toast } = useToast();
 	const { path } = useBreadcrumbs();
 	const { setViewMode } = useViewMode();
@@ -21,7 +19,6 @@ export default function EditorTopBar({ config, font }: { config: string; font: N
 		link.download = "config.yaml";
 		link.href = url;
 		link.click();
-		track("Download Config", { location: "Editor" });
 	}
 
 	function handleCopy() {
@@ -38,7 +35,6 @@ export default function EditorTopBar({ config, font }: { config: string; font: N
 					description: "Failed to copy to clipboard",
 				});
 			});
-		track("Copied Config To Clipboard");
 	}
 
 	return (
@@ -47,7 +43,7 @@ export default function EditorTopBar({ config, font }: { config: string; font: N
 				<TooltipTrigger asChild>
 					<div
 						style={{ direction: "rtl" }}
-						className={`overflow-hidden text-left whitespace-nowrap overflow-ellipsis w-[80%] text-neutral-500 font-normal text-[12px] ${font.className}`}
+						className={`overflow-hidden text-left whitespace-nowrap overflow-ellipsis w-[80%] text-neutral-500 font-normal text-[12px] font-mono`}
 					>
 						{path.length > 2 ? path.slice(2) : "Config"}
 					</div>

@@ -47,7 +47,7 @@ export default function ValidationTypeContent({
 			<ContentRow
 				backend
 				title="Distribution-specific validation"
-				description="Comprehensive validation performed in a backend against actual distribution binaries. The configuration sent to the backend are not stored and are used exclusively for the validation "
+				description="Checks the configuration with the selected Collector binary installed on this OTelBin instance."
 				icon={<Cloud height={16} color="#9CA2AB" />}
 			>
 				<BackendValidation

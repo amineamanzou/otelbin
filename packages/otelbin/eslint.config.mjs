@@ -12,6 +12,7 @@ export default tseslint.config(
 		ignores: [
 			"**/coverage/**",
 			"src/lib/urlState/jsurl2.ts",
+			"src/components/monaco-editor/browser-schema.cjs",
 			"jest.config.ts",
 			// CommonJS build-config files were never linted under the previous
 			// `eslint . --ext .ts,.tsx,.js,.jsx` scope; keep them excluded.
@@ -55,8 +56,9 @@ export default tseslint.config(
 				{
 					source: "string",
 					style: "line",
-					content: "SPDX-FileCopyrightText: (year) Dash0 Inc.\nSPDX-License-Identifier: Apache-2.0",
+					content: "SPDX-FileCopyrightText: (year) (holder)\nSPDX-License-Identifier: Apache-2.0",
 					patterns: {
+						holder: { pattern: "Dash0 Inc\\.|OTelBin contributors", defaultValue: "Dash0 Inc." },
 						year: { pattern: "\\d{4}", defaultValue: String(new Date().getFullYear()) },
 					},
 					trailingNewlines: 2,

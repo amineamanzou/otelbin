@@ -27,16 +27,8 @@ export default function BackendValidation({
 					/>
 				))
 			) : (
-				<p>No Data is available</p>
+				<p>No installed distributions are available.</p>
 			)}
-			<p className="text-[13px] text-neutral-600 font-normal">
-				Missing your Distro?{" "}
-				<span className="text-neutral-950">
-					<a href="https://github.com/dash0hq/otelbin/issues/new" target="_blank">
-						Let us know!{" "}
-					</a>
-				</span>
-			</p>
 		</>
 	);
 }
